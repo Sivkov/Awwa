@@ -2,8 +2,6 @@ import {
   StyleSheet,
   View,
   Text,
-  StatusBar,
-  Footer,
   Button,
   Linking,
   } from 'react-native';
@@ -17,27 +15,32 @@ import {
 
 import React, { Component } from 'react';
 import RNExitApp from 'react-native-exit-app';
+import Player from './Player'
 
+//import TrackPlayer from 'react-native-track-player';
+import TrackPlayer, {
+    CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO,
+    CAPABILITY_STOP
+} from 'react-native-track-player';
 
 export default class App extends Component {
    render() {
     return (
       <View>
         <Enter/>
+        <Player />
         <Buttons/>
       </View>
     );
   }
 }
 
-
-
 const Enter: () => React$Node = () => {
   return (
   <>
     <View style={styles.body}>
       <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>Welcome to Awwa Welcome</Text>
+        <Text style={styles.sectionTitle}>Welcome to Awwa</Text>
         <Text style={styles.sectionDescription}>
           Slide Listen Add images <Text style={styles.highlight}>and</Text> go to Q-digital home site
         </Text>
@@ -47,11 +50,11 @@ const Enter: () => React$Node = () => {
   );
 };
 
-
 class Buttons extends Component {
   _onPressButton() {
     alert('You tapped the button!')
    }
+
    _onPressButtonHome() {
      const url = 'https://q-digital.org/?lang=ru';
      Linking.openURL(url).catch(err => console.error('An error occurred', err));
@@ -59,7 +62,44 @@ class Buttons extends Component {
 
    _onPressButtonExit() {
         RNExitApp.exitApp();
-     }
+   }
+
+   _onPressButtonAudio() {
+            alert ("ммузыку")
+             TrackPlayer.play();
+            /*
+           TrackPlayer.setupPlayer().then(async () => {
+
+                       // Adds a track to the queue
+                       await TrackPlayer.add({
+                           id: 'trackId',
+                           url:'http://www.sovmusic.ru/m32/officers.mp3',
+                           title: 'Track Title',
+                           artist: 'Track Artist',
+
+                       });
+                          TrackPlayer.updateOptions({
+                               capabilities: [
+                                 TrackPlayer.CAPABILITY_PLAY,
+                                 TrackPlayer.CAPABILITY_PAUSE,
+                                 TrackPlayer.CAPABILITY_STOP
+                               ],
+                               compactCapabilities: [
+                                 TrackPlayer.CAPABILITY_PLAY,
+                                 TrackPlayer.CAPABILITY_PAUSE,
+                                 TrackPlayer.CAPABILITY_STOP
+                               ]
+
+                             });
+
+                       // Starts playing it
+                       TrackPlayer.play();
+                });*/
+
+
+
+    
+  }
   render() {
     return (
       <View style={styles.body}>
@@ -71,7 +111,7 @@ class Buttons extends Component {
            </View>
            <View >
               <Button
-                onPress={this._onPressButton}
+                onPress={this._onPressButtonAudio}
                 title="Audio"
                 color="#841584"
               />
@@ -91,9 +131,6 @@ class Buttons extends Component {
     );
   }
 }
-
-
-
 
 const styles = StyleSheet.create({
   view: {
@@ -122,5 +159,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+
+
 
 
