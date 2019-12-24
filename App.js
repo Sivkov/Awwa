@@ -2,31 +2,25 @@ import {
   StyleSheet,
   View,
   Text,
-  Button,
-  Linking,
-  Footer,
+ 
   } from 'react-native';
 
-import {
-  Header, 
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
+import {  Colors, 
 } from 'react-native/Libraries/NewAppScreen';
 
-import React, { Component } from 'react';
-import RNExitApp from 'react-native-exit-app';
-import Player from './Player'
-import Slider from './Slider'
-import TrackPlayer, { CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO, CAPABILITY_STOP
+import React from 'react';
+import Player from './Components/Player'
+import Slider from './Components/Slider'
+import { CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO, CAPABILITY_STOP
 } from 'react-native-track-player';
+import { Buttons } from './Buttons';
 
-export default class App extends Component {
+export default class App extends React.Component {
    render() {
         return (
-          <View style={styles.body}>
+          <View style={styles.body}>  
+            <Text style={styles.sectionTitle}>Welcome to Awwa</Text>
             <Slider />
-            <Enter/>
             <Player/>
             <Buttons/>
           </View>
@@ -36,64 +30,8 @@ export default class App extends Component {
 
 
 
-const Enter: () => React$Node = () => {
-  return (
-  <>
-    <View>
-        <Text style={styles.sectionTitle}>Welcome to Awwa</Text>
-    </View>
-   </>
-  );
-};
 
-class Buttons extends Component {
-  _onPressButton() {
-    alert('You tapped the button!')
-   }
-
-   _onPressButtonHome() {
-     const url = 'https://q-digital.org/?lang=ru';
-     Linking.openURL(url).catch(err => console.error('An error occurred', err));
-   }
-
-   _onPressButtonExit() {
-        RNExitApp.exitApp();
-   }
-
-   _onPressButtonAudio() {
-            alert ("ммузыку")
-            TrackPlayer.play();
-   }
-  render() {
-    return (
-    
-      <View style={styles.fixToText}>
-              <Button 
-                onPress={this._onPressButton}
-                title="Press Me"
-              />
-         
-              <Button
-                onPress={this._onPressButtonAudio}
-                title="Audio"
-              />
-         
-              <Button
-                onPress={this._onPressButtonExit}
-                title="EXIT"
-              />
-
-              <Button
-                onPress={this._onPressButtonHome}
-                title="Q-digital"
-              />
-           
-     </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   view: {
     flex: 1,
     right: 0,
