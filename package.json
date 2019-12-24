@@ -13,6 +13,7 @@
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-exit-app": "^1.1.0",
+    "react-native-image-slider": "^2.0.3",
     "react-native-track-player": "^1.1.8",
     "redux": "^4.0.4"
   },

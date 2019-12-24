@@ -1,11 +1,15 @@
 import { View, Button, Linking, Text } from 'react-native';
 import React from 'react';
+import ImageSlider from 'react-native-image-slider';
+ 
 
-export default class Player extends React.Component {
+export default class Slider extends React.Component {
 
-  render() {
-    return (
-      <View><Text>ой</Text></View>
-    );
-  }
+    render() {
+      return (<ImageSlider images={[
+        'https://i.pinimg.com/236x/ea/be/f0/eabef0c98a55ec437d9a3abb88740363.jpg',
+        'http://www.fonstola.ru/pic/201904/320x480/fonstola.ru-325380.jpg',
+        'https://thumb-p4.xhcdn.com/a/zhRGiofc2zM0kSObSZkiAA/000/198/199/134_1000.jpg'
+      ]}/>)
+    }
 }
