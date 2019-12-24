@@ -9,8 +9,8 @@ import {  Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
 import React from 'react';
-import Player from './Components/Player'
-import Slider from './Components/Slider'
+import Player from './Player'
+import Slider from './Slider'
 import { CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO, CAPABILITY_STOP
 } from 'react-native-track-player';
 import { Buttons } from './Buttons';
