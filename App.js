@@ -11,15 +11,16 @@ import {  Colors,
 import React from 'react';
 import Player from './Player'
 import Slider from './Slider'
-import { CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO, CAPABILITY_STOP
-} from 'react-native-track-player';
 import { Buttons } from './Buttons';
+import AddPic from './AddPic';
+
 
 export default class App extends React.Component {
    render() {
         return (
           <View style={styles.body}>  
             <Text style={styles.sectionTitle}>Welcome to Awwa</Text>
+            <AddPic/>
             <Slider />
             <Player/>
             <Buttons/>
