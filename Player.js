@@ -44,14 +44,12 @@ export default class Player extends React.Component {
             <Button warning onPress={() => TrackPlayer.pause()}
               title="Pause ||" />
             <Button success onPress={() => TrackPlayer.skipToNext()}
-                title=" next >||" />
+                title=" next >>" />
             <Button success onPress={() => TrackPlayer.skipToPrevious()}
-                title=" ||< back " />
+                title=" << back " />
            <Button danger onPress={() => TrackPlayer.stop()}
                title="stop" />
           
         </View>;
     }
 }
-
-//https://qna.habr.com/q/621060
