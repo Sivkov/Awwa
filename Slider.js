@@ -4,9 +4,14 @@ import ImageSlider from 'react-native-image-slider';
 import { connect } from 'react-redux'
 
 class Slider extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state= { display: this.props.images.images }
+  }
 
     render() {
-      return (<ImageSlider images={[ this.props.images.images
+      return (<ImageSlider images={[ ...this.state.display
+
       ]}/>)
     }
 }

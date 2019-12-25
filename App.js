@@ -10,6 +10,7 @@ import {  Colors,
 import React from 'react';
 import Player from './Player'
 import Slider from './Slider'
+import AddPic from './AddPic'
 import Buttons from './Buttons'
 import { connect } from 'react-redux'
 
@@ -19,13 +20,9 @@ class App extends React.Component {
         return (
           <View style={styles.body}>  
             <Text style={styles.sectionTitle}>Welcome to Awwa</Text>
-            <Text>{this.props.mode.mode}</Text>
-{/*
-            {this.props.mode.mode== "audio" ? < Player />  :  '' }
-            {this.props.mode.mode== "slider" ? < Slider />  :  '' }
-            {this.props.mode.mode== "add" ? <AddPic/> :  '' }
-
-*/}
+            { this.props.mode.mode == 1 ? (<Slider/>)  : null }
+            { this.props.mode.mode == 2 ? (<AddPic/>)  : null }
+            { this.props.mode.mode == 3 ? (<Player/>)  :  null }          
             <Buttons/>
           </View>
         );
