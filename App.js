@@ -2,7 +2,6 @@ import {
   StyleSheet,
   View,
   Text,
- 
   } from 'react-native';
 
 import {  Colors, 
@@ -11,19 +10,37 @@ import {  Colors,
 import React from 'react';
 import Player from './Player'
 import Slider from './Slider'
-import { Buttons } from './Buttons'
+import Buttons from './Buttons'
+import { connect } from 'react-redux'
 
 
-export default class App extends React.Component {
+class App extends React.Component {
    render() {
         return (
           <View style={styles.body}>  
             <Text style={styles.sectionTitle}>Welcome to Awwa</Text>
+            <Text>{this.props.mode.mode}</Text>
+{/*
+            {this.props.mode.mode== "audio" ? < Player />  :  '' }
+            {this.props.mode.mode== "slider" ? < Slider />  :  '' }
+            {this.props.mode.mode== "add" ? <AddPic/> :  '' }
+
+*/}
             <Buttons/>
           </View>
         );
   }
 }
+
+
+const mapStateToProps = store => {
+  console.log(store) 
+  return {
+    mode: store.mode 
+  }
+}
+  
+export default connect(mapStateToProps, null )(App)
 
 
 export const styles = StyleSheet.create({
