@@ -11,8 +11,7 @@ import {  Colors,
 import React from 'react';
 import Player from './Player'
 import Slider from './Slider'
-import { Buttons } from './Buttons';
-import AddPic from './AddPic';
+import { Buttons } from './Buttons'
 
 
 export default class App extends React.Component {
@@ -20,16 +19,11 @@ export default class App extends React.Component {
         return (
           <View style={styles.body}>  
             <Text style={styles.sectionTitle}>Welcome to Awwa</Text>
-            <AddPic/>
-            <Slider />
-            <Player/>
             <Buttons/>
           </View>
         );
   }
 }
-
-
 
 
 export const styles = StyleSheet.create({
