@@ -1,4 +1,4 @@
-import { View, Button, Linking } from 'react-native';
+import { View, Linking, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 import RNExitApp from 'react-native-exit-app';
 import TrackPlayer from 'react-native-track-player';
@@ -12,6 +12,15 @@ class Buttons extends React.Component {
     this.props.setMode(1)
   }
 
+  _onPressButtonAddPic = () => {
+    this.props.setMode(2)
+  }
+
+  _onPressButtonAudio = () => {
+    this.props.setMode(3)
+    TrackPlayer.play();
+  }
+
   _onPressButtonHome = () => {
     const url = 'https://q-digital.org/?lang=ru';
     Linking.openURL(url).catch(err => console.error('An error occurred', err));
@@ -21,26 +30,30 @@ class Buttons extends React.Component {
     RNExitApp.exitApp();
   }
 
-  _onPressButtonAudio = () => {
-    this.props.setMode(3)
-    TrackPlayer.play();
-  }
-
-  _onPressButtonAddPic = () => {
-    this.props.setMode(2)
-  }
-
-
-
   render() {
     return (
       <View style={styles.fixToText}>
-     
-        <Button onPress={this._onPressButton} title="Slider" />
-        <Button onPress={this._onPressButtonAddPic} title="Load Pics" />
-        <Button onPress={this._onPressButtonAudio} title="Audio" />
-        <Button onPress={this._onPressButtonHome} title="to Q-digital" />
-        <Button onPress={this._onPressButtonExit} title="EXIT" />
+          
+            <TouchableOpacity onPress={this._onPressButton}>
+              <Image style={styles.imageSize} source={require('./images/12.png')} />
+            </TouchableOpacity> 
+
+            <TouchableOpacity onPress={this._onPressButtonAddPic}>
+              <Image style={styles.imageSize} source={require('./images/13.png')} />
+            </TouchableOpacity> 
+
+            <TouchableOpacity onPress={this._onPressButtonAudio}>
+              <Image style={styles.imageSize} source={require('./images/14.png')} />
+            </TouchableOpacity> 
+
+            <TouchableOpacity onPress={this._onPressButtonHome}>
+              <Image style={styles.imageSize} source={require('./images/11.png')} />
+            </TouchableOpacity> 
+
+            <TouchableOpacity onPress={this._onPressButtonExit}>
+              <Image style={styles.imageSize} source={require('./images/15.png')} />
+            </TouchableOpacity> 
+
       </View>);
   }
 }
@@ -50,5 +63,6 @@ const mapDispatchToProps = dispatch => {
     setMode: mode => dispatch(setMode(mode))
   }
 }
+
 
 export default connect(null, mapDispatchToProps)(Buttons)

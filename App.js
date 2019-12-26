@@ -81,17 +81,26 @@ export const styles = StyleSheet.create({
   button: {
       marginTop: 10,
       marginBottom: 10,
-      width: 25
+      width: 25,
+      height: 25
+
   },
     fixToText: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    backgroundColor: "white",
   },
     footer: {position: 'absolute', 
     left: 0, 
     right: 0, 
     bottom: 0
   },
+  ImageSize: {
+    marginTop: 10,
+    marginBottom: 10,
+    width: 25
+},
+  
 
 });
 

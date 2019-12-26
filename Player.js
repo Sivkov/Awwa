@@ -1,27 +1,66 @@
 import React from 'react';
 import { View , Button, StyleSheet} from 'react-native';
-import TrackPlayer, {
-    CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO,
-    CAPABILITY_STOP, CAPABILITY_SKIP_TO_PREVIOUS, CAPABILITY_SKIP_TO_NEXT} from 'react-native-track-player';
+import TrackPlayer  from 'react-native-track-player';
 import { styles } from './App';
 
 
 export default class Player extends React.Component {
+   
     async componentDidMount() {
 
-        await TrackPlayer.setupPlayer({});
+
+        TrackPlayer.addEventListener(
+            'remote-stop', () => {TrackPlayer.stop()})
+
+        TrackPlayer.addEventListener(
+            'remote-pause',  () => {TrackPlayer.pause()})
+
+        TrackPlayer.addEventListener(
+            'remote-play', () => {TrackPlayer.play()})
+     
+       
+       
         TrackPlayer.updateOptions({
-          
-        capabilities: [CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO,
-    CAPABILITY_STOP, CAPABILITY_SKIP_TO_PREVIOUS, CAPABILITY_SKIP_TO_NEXT],
-            compactCapabilities: [CAPABILITY_PLAY, CAPABILITY_PAUSE, CAPABILITY_STOP, CAPABILITY_SEEK_TO],
-            notificationCapabilities: [CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO,
-    CAPABILITY_STOP, CAPABILITY_SKIP_TO_PREVIOUS, CAPABILITY_SKIP_TO_NEXT],
+        alwaysPauseOnInterruption: true,
+        waitForBuffer: true,
+        stopWithApp: true,
+                              
+        capabilities: [
+            TrackPlayer.CAPABILITY_PLAY,
+            TrackPlayer.CAPABILITY_STOP,
+            TrackPlayer.CAPABILITY_PAUSE,
+            TrackPlayer.CAPABILITY_SKIP_TO_NEXT,
+            TrackPlayer.CAPABILITY_SKIP_TO_PREVIOUS,
+			
+        ],
             
-            stopWithApp: true,
-            pauseWithApp: true
-           
+        notificationCapabilities: [
+            TrackPlayer.CAPABILITY_PLAY,
+            TrackPlayer.CAPABILITY_STOP,
+            TrackPlayer.CAPABILITY_PAUSE,
+          
+        ],
+          
+        compactCapabilities: [
+            TrackPlayer.CAPABILITY_PLAY,
+            TrackPlayer.CAPABILITY_STOP,
+            TrackPlayer.CAPABILITY_PAUSE,
+            TrackPlayer.CAPABILITY_SKIP_TO_NEXT,
+            TrackPlayer.CAPABILITY_SKIP_TO_PREVIOUS,
+        ]  ,
+
+                 
         });
+
+        
+
+        await TrackPlayer.add({
+            id: '0',
+            url: 'http://www.sovmusic.ru/m32/poehali.mp3', 
+            title: 'Поехали',
+            artist: 'Гагарин',
+        });
+
         await TrackPlayer.add({
             id: '1',
             url: 'http://tegos.kz/new/mp3_full/Luis_Fonsi_feat._Daddy_Yankee_-_Despacito.mp3', 
@@ -37,27 +76,40 @@ export default class Player extends React.Component {
             
         });
 
+        await TrackPlayer.add({
+            id: '3',
+            url: 'http://www.sovmusic.ru/m32/lamarse3.mp3', 
+            title: 'a la Patri..',
+            artist: 'Ф Шаляпин',
+                
+            });
+    
+
    
     }
     render() {
       
-      return (
-         <View style={styles.fixToText} >
-            <Button success onPress={() => TrackPlayer.skipToPrevious()}
-                title=" << back " />
-           <Button info onPress={() => { TrackPlayer.play() }}
-                title="Play >" />
-          
-            <Button success onPress={() => TrackPlayer.skipToNext()}
-                title=" next >>" />
-            <Button warning onPress={() => TrackPlayer.pause()}
-                        title="Pause ||" />
-            
-           <Button danger onPress={() => TrackPlayer.stop()}
-               title="stop" />
-          
-        </View>
-      )
-    }
-}
+        return ( 
+            <View style={styles.fixToText} >
+               <Button success onPress={() => TrackPlayer.skipToPrevious()}
+                   title=" << back " />
+                   
+              <Button info onPress={() => { TrackPlayer.play() }}
+                   title="Play >" />
+             
+               <Button success onPress={() => TrackPlayer.skipToNext()}
+                   title="  >>" />
+   
+               <Button warning onPress={() => TrackPlayer.pause()}
+                           title="Pause ||" />
+               
+              <Button danger onPress={() => TrackPlayer.stop()}
+                  title="stop" />
+             
+           </View>
+         )
+       }
+   }
 
+   
+ 
