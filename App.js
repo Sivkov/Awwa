@@ -12,6 +12,8 @@ import Player from './Player'
 import Slider from './Slider'
 import AddPic from './AddPic'
 import Buttons from './Buttons'
+import Login from './Auth'
+
 import { connect } from 'react-redux'
 
 
@@ -20,14 +22,13 @@ class App extends React.Component {
         return (
           <View style={styles.body}>  
             <Text style={styles.sectionTitle}>Welcome to Awwa</Text>
+            { this.props.mode.mode == 0 ? (<Login/>)  : null }
             { this.props.mode.mode == 1 ? (<Slider/>)  : null }
             { this.props.mode.mode == 2 ? (<AddPic/>)  : null }
             { this.props.mode.mode == 3 ? (<Player/>)  :  null }
             
             <View style={styles.footer}><Buttons/>
             </View>
-                
-            
           </View>
         );
   }

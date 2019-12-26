@@ -1,5 +1,5 @@
 const initialState = {
- mode: "none"
+ mode: 0
 };
 
 export function mode (state = initialState, action) {

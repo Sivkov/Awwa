@@ -1,10 +1,9 @@
 import React from 'react';
 import { View , Button, StyleSheet} from 'react-native';
-import {  Colors, 
-} from 'react-native/Libraries/NewAppScreen';
 import TrackPlayer, {
     CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO,
     CAPABILITY_STOP, CAPABILITY_SKIP_TO_PREVIOUS, CAPABILITY_SKIP_TO_NEXT} from 'react-native-track-player';
+import { styles } from './App';
 
 
 export default class Player extends React.Component {
@@ -12,7 +11,8 @@ export default class Player extends React.Component {
 
         await TrackPlayer.setupPlayer({});
         TrackPlayer.updateOptions({
-           capabilities: [CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO,
+          
+        capabilities: [CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO,
     CAPABILITY_STOP, CAPABILITY_SKIP_TO_PREVIOUS, CAPABILITY_SKIP_TO_NEXT],
             compactCapabilities: [CAPABILITY_PLAY, CAPABILITY_PAUSE, CAPABILITY_STOP, CAPABILITY_SEEK_TO],
             notificationCapabilities: [CAPABILITY_PAUSE, CAPABILITY_PLAY, CAPABILITY_SEEK_TO,
@@ -40,7 +40,9 @@ export default class Player extends React.Component {
    
     }
     render() {
-        return <View style={styles.fixToText} >
+      
+      return (
+         <View style={styles.fixToText} >
             <Button success onPress={() => TrackPlayer.skipToPrevious()}
                 title=" << back " />
            <Button info onPress={() => { TrackPlayer.play() }}
@@ -54,37 +56,8 @@ export default class Player extends React.Component {
            <Button danger onPress={() => TrackPlayer.stop()}
                title="stop" />
           
-        </View>;
+        </View>
+      )
     }
 }
 
-
-export const styles = StyleSheet.create({
-    view: {
-      flex: 1,
-      right: 0,
-    },
-    body: {
-      textAlign: 'center',
-      flex: 1
-      },
-    highlight: {
-      fontWeight: '700',
-    },
-    button: {
-        marginTop: 10,
-        marginBottom: 10,
-        width: 25
-    },
-      fixToText: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-      footer: {position: 'absolute', 
-      left: 0, 
-      right: 0, 
-      bottom: 0
-    },
-  
-  });
-  

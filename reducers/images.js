@@ -17,7 +17,4 @@ export function images (state = initialState, action) {
       default:
         return state
     }
-  }
-
-/*     return         return {  ...state,
-            images: state.images.concat(action.payload) }*/
+}
