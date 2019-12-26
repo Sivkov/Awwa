@@ -30,9 +30,12 @@ class Buttons extends React.Component {
     this.props.setMode(2)
   }
 
+
+
   render() {
     return (
       <View style={styles.fixToText}>
+     
         <Button onPress={this._onPressButton} title="Slider" />
         <Button onPress={this._onPressButtonAddPic} title="Load Pics" />
         <Button onPress={this._onPressButtonAudio} title="Audio" />

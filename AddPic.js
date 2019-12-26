@@ -1,8 +1,8 @@
 import React from 'react';
 import { ActivityIndicator, View  } from 'react-native';
-import ImageSlider from 'react-native-image-slider';
 import { connect } from 'react-redux'
 import { setSlider } from './actions/ImageActions'
+import Slider from './Slider'
 
 class AddPic extends React.Component {
 
@@ -30,13 +30,13 @@ class AddPic extends React.Component {
   render(){
     if(this.state.isLoading){
       return(
-        <View style={{flex: 2, padding: 20}}>
+        <View style={{flex: 1, padding: 20}}>
           <ActivityIndicator/>
         </View>
       )
     }
 
-    return ( null  )
+    return ( <Slider/> )
     }
 }
 
@@ -46,6 +46,5 @@ const mapDispatchToProps = dispatch => {
   }
 }
   
-
 export default connect (null, mapDispatchToProps)(AddPic)
 

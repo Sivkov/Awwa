@@ -10,11 +10,15 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.7.1",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-exit-app": "^1.1.0",
     "react-native-image-slider": "^2.0.3",
+    "react-native-instagram-login": "^2.0.0",
+    "react-native-simple-store": "^2.0.2",
     "react-native-track-player": "^1.1.8",
+    "react-native-webview": "^8.0.1",
     "react-redux": "^7.1.3",
     "redux": "^4.0.4"
   },

@@ -63,6 +63,7 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
     color: Colors.black,
     textAlign: "center"
+    
   },
   sectionDescription: {
     marginTop: 8,
@@ -71,7 +72,11 @@ export const styles = StyleSheet.create({
     color: Colors.dark,
   },
   highlight: {
-    fontWeight: '700',
+    fontWeight: '900',
+    fontSize: 32,
+    color: "white",
+    textAlign: "center",
+    backgroundColor: "black",
   },
   button: {
       marginTop: 10,
@@ -93,3 +98,6 @@ export const styles = StyleSheet.create({
 
 
 
+/*  <ImageBackground source={...} style={{width: '100%', height: '100%'}}>
+    <Text>Inside</Text>
+  </ImageBackground>*/
