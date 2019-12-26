@@ -4,7 +4,6 @@ import ImageSlider from 'react-native-image-slider';
 import { connect } from 'react-redux'
 import { setSlider } from './actions/ImageActions'
 
-
 class AddPic extends React.Component {
 
   constructor(props){
@@ -18,11 +17,9 @@ class AddPic extends React.Component {
       .then((responseJson) => {
 
         this.setState({
-          isLoading: false,
-          dataSource: responseJson,
-        }, function(){
+          isLoading: false });
 
-        });
+        this.props.setSlider( responseJson) 
 
       })
       .catch((error) =>{
@@ -33,21 +30,21 @@ class AddPic extends React.Component {
   render(){
     if(this.state.isLoading){
       return(
-        <View style={{flex: 1, padding: 20}}>
+        <View style={{flex: 2, padding: 20}}>
           <ActivityIndicator/>
         </View>
       )
     }
 
-    return ( this.props.setSlider( this.state.dataSource ) )
+    return ( null  )
     }
 }
 
-  const mapDispatchToProps = dispatch => {
-    return {
-      setSlider:files => dispatch(setSlider(files))
-    }
+const mapDispatchToProps = dispatch => {
+  return {
+    setSlider:files => dispatch(setSlider(files))
   }
+}
   
 
 export default connect (null, mapDispatchToProps)(AddPic)
