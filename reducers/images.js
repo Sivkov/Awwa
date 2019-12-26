@@ -9,9 +9,15 @@ const initialState = { images:
 
 export function images (state = initialState, action) {
     switch (action.type) {
+     
       case 'SET_SLIDER':
-        return { ...state,   images:action.payload }
+          const adds=action.payload
+          return {  ...state,
+            images: state.images.concat(adds) }
       default:
         return state
     }
   }
+
+/*     return         return {  ...state,
+            images: state.images.concat(action.payload) }*/

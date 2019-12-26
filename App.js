@@ -22,8 +22,12 @@ class App extends React.Component {
             <Text style={styles.sectionTitle}>Welcome to Awwa</Text>
             { this.props.mode.mode == 1 ? (<Slider/>)  : null }
             { this.props.mode.mode == 2 ? (<AddPic/>)  : null }
-            { this.props.mode.mode == 3 ? (<Player/>)  :  null }          
-            <Buttons/>
+            { this.props.mode.mode == 3 ? (<Player/>)  :  null }
+            
+            <View style={styles.footer}><Buttons/>
+            </View>
+                
+            
           </View>
         );
   }
@@ -77,6 +81,12 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+    footer: {position: 'absolute', 
+    left: 0, 
+    right: 0, 
+    bottom: 0
+  },
+
 });
 
 

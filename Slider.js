@@ -10,9 +10,11 @@ class Slider extends React.Component {
   }
 
     render() {
-      return (<ImageSlider images={[ ...this.state.display
-
-      ]}/>)
+      
+      return ( <ImageSlider images={[ ...this.props.images.images  ]}/>
+      
+      
+      )
     }
 }
 

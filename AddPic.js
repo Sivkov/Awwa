@@ -1,9 +1,11 @@
 import React from 'react';
 import { ActivityIndicator, View  } from 'react-native';
 import ImageSlider from 'react-native-image-slider';
+import { connect } from 'react-redux'
+import { setSlider } from './actions/ImageActions'
 
 
-export default class AddPIc extends React.Component {
+class AddPic extends React.Component {
 
   constructor(props){
     super(props);
@@ -37,36 +39,16 @@ export default class AddPIc extends React.Component {
       )
     }
 
-    return (<ImageSlider images={[ ...this.state.dataSource
-    ]}/>)
+    return ( this.props.setSlider( this.state.dataSource ) )
+    }
+}
+
+  const mapDispatchToProps = dispatch => {
+    return {
+      setSlider:files => dispatch(setSlider(files))
     }
   }
-
-
-
-
-
-    /*
-
-
-    //import { connect } from 'react-redux'
-import { setSlider } from './actions/ImageActions'
-
-
-    return(
-
-        this.props.setSlider(this.state.dataSource)
-    
-      );
-  }
-}
-
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setSlider:files => dispatch(setSlider(files))
-  }
-}
+  
 
 export default connect (null, mapDispatchToProps)(AddPic)
-*/
+

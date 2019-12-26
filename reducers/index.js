@@ -4,7 +4,7 @@ import { mode } from './mode'
 
 export const rootReducer = combineReducers({
   images,
-  mode
+  mode,
 })
 
 
