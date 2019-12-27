@@ -17,7 +17,12 @@ export default class Player extends React.Component {
 
         TrackPlayer.addEventListener(
             'remote-play', () => {TrackPlayer.play()})
-     
+    
+        TrackPlayer.addEventListener(
+            'remote-next', () => {TrackPlayer.skipToNext()})
+    
+        TrackPlayer.addEventListener(
+            'remote-previous', () => {TrackPlayer.skipToPrevious()})
        
        
         TrackPlayer.updateOptions({
@@ -29,25 +34,33 @@ export default class Player extends React.Component {
             TrackPlayer.CAPABILITY_PLAY,
             TrackPlayer.CAPABILITY_STOP,
             TrackPlayer.CAPABILITY_PAUSE,
+            TrackPlayer.CAPABILITY_SKIP,
             TrackPlayer.CAPABILITY_SKIP_TO_NEXT,
             TrackPlayer.CAPABILITY_SKIP_TO_PREVIOUS,
 			
         ],
-            
-        notificationCapabilities: [
-            TrackPlayer.CAPABILITY_PLAY,
-            TrackPlayer.CAPABILITY_STOP,
-            TrackPlayer.CAPABILITY_PAUSE,
-          
-        ],
+
           
         compactCapabilities: [
             TrackPlayer.CAPABILITY_PLAY,
             TrackPlayer.CAPABILITY_STOP,
             TrackPlayer.CAPABILITY_PAUSE,
+            TrackPlayer.CAPABILITY_SKIP,
             TrackPlayer.CAPABILITY_SKIP_TO_NEXT,
             TrackPlayer.CAPABILITY_SKIP_TO_PREVIOUS,
         ]  ,
+
+                    
+        notificationCapabilities: [
+            TrackPlayer.CAPABILITY_PLAY,
+            TrackPlayer.CAPABILITY_STOP,
+            TrackPlayer.CAPABILITY_PAUSE,
+            TrackPlayer.CAPABILITY_SKIP,
+            TrackPlayer.CAPABILITY_SKIP_TO_NEXT,
+            TrackPlayer.CAPABILITY_SKIP_TO_PREVIOUS,
+            
+          
+        ],
 
                  
         });
@@ -92,7 +105,7 @@ export default class Player extends React.Component {
         return ( 
             <View style={styles.fixToText} >
                <Button success onPress={() => TrackPlayer.skipToPrevious()}
-                   title=" << back " />
+                   title="<<" />
                    
               <Button info onPress={() => { TrackPlayer.play() }}
                    title="Play >" />
@@ -101,7 +114,7 @@ export default class Player extends React.Component {
                    title="  >>" />
    
                <Button warning onPress={() => TrackPlayer.pause()}
-                           title="Pause ||" />
+                           title=" pause ||" />
                
               <Button danger onPress={() => TrackPlayer.stop()}
                   title="stop" />
