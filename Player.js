@@ -102,7 +102,7 @@ export default class Player extends React.Component {
     }
     render() {
       
-        return ( 
+        return ( null/*
             <View style={styles.fixToText} >
                <Button success onPress={() => TrackPlayer.skipToPrevious()}
                    title="<<" />
@@ -119,7 +119,7 @@ export default class Player extends React.Component {
               <Button danger onPress={() => TrackPlayer.stop()}
                   title="stop" />
              
-           </View>
+           </View>*/
          )
        }
    }
