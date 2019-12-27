@@ -26,7 +26,7 @@ export default class Login extends Component {
                     ref={ref => (this.instagramLogin = ref)}
                     appId='1456913984461207'
                     appSecret='e99c5e59302abac657d61e09cc5af3f3'
-                    redirectUrl='htts://www.google.com/'
+                    redirectUrl='https://www.puer18.ru/'
                     scopes={['user_profile', 'user_media']}
                     onLoginSuccess={ ()=> console.log ("afr") }
                     onLoginFailure={() => console.log ("что-то"+data) }
